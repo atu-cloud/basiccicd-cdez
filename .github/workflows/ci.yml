@@ -52,4 +52,15 @@ jobs:
         run: |
           # Test endpointu głównego
           curl -f http://localhost:3000/ || exit 1
+
+      - name: Test endpoint with secret
+        run: |
+          # Test endpointu pogody dla Zakopanego
+          curl -f http://localhost:3000/weather/Zakopane || exit 1
+          
+      - name: Cleanup
+        if: always()
+        run: docker rm -f weather-app-container
+
+
  
